@@ -60,29 +60,45 @@ async def ship(context, name=None):
     if name=="오로라ES" or name=="오로라es" or name=="오로라깡통":
         _MFT = 'RSI'    # 제조사
         _name = 'ES'    # 기종
-        _image = 'https://starcitizen.tools/images/thumb/d/d0/Aurora_ES_in_black_room_-_Isometric.png/900px-Aurora_ES_in_black_room_-_Isometric.png'
+        _image = 'https://starcitizen.tools/images/8/8d/Aurora_ES_in_SelfLand_-_Isometric.jpg'
 
         embed = ShipFrame(_title, _footer, _MFT, _name, _image).shipInfo()
         await context.send(embed=embed)
 
     # Aurora_MR
     if name=="오로라MR" or name=="오로라mr":
-        # <<
+        _MFT = 'RSI'    # 제조사
+        _name = 'MR'    # 기종
+        _image = 'https://starcitizen.tools/images/c/c4/Aurora_MR_in_SelfLand_-_Isometric.jpg'
+
+        embed = ShipFrame(_title, _footer, _MFT, _name, _image).shipInfo()
         await context.send(embed=embed)
 
     # Aurora_CL
     if name=="오로라CL" or name=="오로라cl":
-        # <<
+        _MFT = 'RSI'    # 제조사
+        _name = 'CL'    # 기종
+        _image = 'https://starcitizen.tools/images/3/37/Aurora_CL_in_SelfLand_-_Isometric.jpg'
+
+        embed = ShipFrame(_title, _footer, _MFT, _name, _image).shipInfo()
         await context.send(embed=embed)
 
     # Aurora_LN
     if name=="오로라LN" or name=="오로라ln":
-        # <<
+        _MFT = 'RSI'    # 제조사
+        _name = 'LN'    # 기종
+        _image = 'https://starcitizen.tools/images/6/6c/Aurora_LN_in_SelfLand_-_Isometric.jpg'
+
+        embed = ShipFrame(_title, _footer, _MFT, _name, _image).shipInfo()
         await context.send(embed=embed)
 
     # Aurora_LX
     if name=="오로라LX" or name=="오로라lx":
-        # <<
+        _MFT = 'RSI'    # 제조사
+        _name = 'LX'    # 기종
+        _image = 'https://starcitizen.tools/images/9/94/Aurora_LX_in_SelfLand_-_Isometric.jpg'
+
+        embed = ShipFrame(_title, _footer, _MFT, _name, _image).shipInfo()
         await context.send(embed=embed)
 
     # Arrow
