@@ -3,8 +3,6 @@ import asyncio
 from discord.ext import commands
 from discord.ext.commands import Bot
 
-from openpyxl import load_workbook
-
 from lbry.Frame import ShipFrame
 
 bot = commands.Bot(command_prefix="!")
@@ -39,6 +37,7 @@ async def help(context):
             title="도움말 페이지", 
             description="이 봇은 SCDB로서 다음과 같은 명령어를 가집니다.", 
             colour = 00000000)
+    embed.add_field(name= "함선정보 명령어", value="!ship help", inline= True)
     embed.set_author(name= _title)
     embed.set_footer(text= _footer)
     await context.send(embed=embed)
@@ -50,14 +49,64 @@ async def ship(context, name=None):
     if name==None:
         embed = discord.Embed(
             title="도움말", 
-            description="!ship 함선이름 으로 입력해주세요.", 
+            description="!ship \"함선이름\" 으로 입력해주세요.\n 명령어는 !ship help를 입력하여 참조해주시길 바랍니다.", 
             colour = 00000000)
-        embed.set_author(name= self.title)
-        embed.set_footer(text= self.footer)
+        embed.set_author(name= _title)
+        embed.set_footer(text= _footer)
+        await context.send(embed=embed)
+
+    # Help
+    if name=="help":
+        embed = discord.Embed(
+            title="도움말", 
+            description="!ship의 부속 명령어는 다음 명령어를 참조해주십시오.", 
+            colour = 00000000)
+        embed.add_field(name= "Roberts Space Industries", value="help_RSI", inline= True)
+        embed.add_field(name= "Anvil Aerospace", value="help_ANVL", inline= True)
+        embed.add_field(name= "Crusader Industries", value="help_CRUS", inline= True)
+        embed.set_author(name= _title)
+        embed.set_footer(text= _footer)
+        await context.send(embed=embed)
+
+    # Help RSI
+    if name=="help_RSI":
+        embed = discord.Embed(
+            title="도움말", 
+            description="Roberts Space Industries 항목의 명령어 목록입니다. 대문자와 띄어쓰기에 주의 해 주시길 바랍니다.", 
+            colour = 00000000)
+        embed.add_field(name= "오로라ES", value="Auroraes, AuroraES, 오로라es, 오로라ES, 오로랃ㄴ, 오로라깡통", inline= False)
+        embed.add_field(name= "오로라MR", value="Auroramr, AuroraMR, 오로라mr, 오로라MR, 오로라ㅡㄱ", inline= False)
+        embed.add_field(name= "오로라CL", value="Auroracl, AuroraCL, 오로라cl, 오로라CL, 오로라치", inline= False)
+        embed.add_field(name= "오로라LN", value="Auroraln, AuroraLN, 오로라ln, 오로라LN, 오로라ㅣㅜ", inline= False)
+        embed.add_field(name= "오로라LX", value="Auroralx, AuroraLX, 오로라lx, 오로라LX, 오로라ㅣㅌ", inline= False)
+        embed.set_author(name= _title)
+        embed.set_footer(text= _footer)
+        await context.send(embed=embed)
+
+    # Help ANVL
+    if name=="help_ANVL":
+        embed = discord.Embed(
+            title="도움말", 
+            description="Anvil Aerospace 항목의 명령어 목록입니다. 대문자와 띄어쓰기에 주의 해 주시길 바랍니다.", 
+            colour = 00000000)
+        embed.add_field(name= "테스트", value="명령어 목록", inline= False)
+        embed.set_author(name= _title)
+        embed.set_footer(text= _footer)
+        await context.send(embed=embed)
+
+    # Help CRUS
+    if name=="help_CRUS":
+        embed = discord.Embed(
+            title="도움말", 
+            description="Crusader Industries 항목의 명령어 목록입니다. 대문자와 띄어쓰기에 주의 해 주시길 바랍니다.", 
+            colour = 00000000)
+        embed.add_field(name= "테스트", value="명령어 목록", inline= False)
+        embed.set_author(name= _title)
+        embed.set_footer(text= _footer)
         await context.send(embed=embed)
 
     # Aurora_ES
-    if name=="오로라ES" or name=="오로라es" or name=="오로라깡통":
+    if name=="Auroraes" or name=="AuroraES" or name=="오로라es" or name=="오로라ES" or name=="오로랃ㄴ" or name=="오로라깡통":
         _MFT = 'RSI'    # 제조사
         _name = 'ES'    # 기종
         _image = 'https://starcitizen.tools/images/8/8d/Aurora_ES_in_SelfLand_-_Isometric.jpg'
@@ -66,7 +115,7 @@ async def ship(context, name=None):
         await context.send(embed=embed)
 
     # Aurora_MR
-    if name=="오로라MR" or name=="오로라mr":
+    if name=="Auroramr" or name=="AuroraMR" or name=="오로라mr" or name=="오로라MR" or name=="오로라ㅡㄱ":
         _MFT = 'RSI'    # 제조사
         _name = 'MR'    # 기종
         _image = 'https://starcitizen.tools/images/c/c4/Aurora_MR_in_SelfLand_-_Isometric.jpg'
@@ -75,7 +124,7 @@ async def ship(context, name=None):
         await context.send(embed=embed)
 
     # Aurora_CL
-    if name=="오로라CL" or name=="오로라cl":
+    if name=="Auroracl" or name=="AuroraCL" or name=="오로라cl" or name=="오로라CL" or name=="오로라치":
         _MFT = 'RSI'    # 제조사
         _name = 'CL'    # 기종
         _image = 'https://starcitizen.tools/images/3/37/Aurora_CL_in_SelfLand_-_Isometric.jpg'
@@ -84,7 +133,7 @@ async def ship(context, name=None):
         await context.send(embed=embed)
 
     # Aurora_LN
-    if name=="오로라LN" or name=="오로라ln":
+    if name=="Auroraln" or name=="AuroraLN" or name=="오로라ln" or name=="오로라LN" or name=="오로라ㅣㅜ":
         _MFT = 'RSI'    # 제조사
         _name = 'LN'    # 기종
         _image = 'https://starcitizen.tools/images/6/6c/Aurora_LN_in_SelfLand_-_Isometric.jpg'
@@ -93,7 +142,7 @@ async def ship(context, name=None):
         await context.send(embed=embed)
 
     # Aurora_LX
-    if name=="오로라LX" or name=="오로라lx":
+    if name=="Auroralx" or name=="AuroraLX" or name=="오로라lx" or name=="오로라LX" or name=="오로라ㅣㅌ":
         _MFT = 'RSI'    # 제조사
         _name = 'LX'    # 기종
         _image = 'https://starcitizen.tools/images/9/94/Aurora_LX_in_SelfLand_-_Isometric.jpg'
